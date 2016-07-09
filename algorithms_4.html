@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+
+	<script>
+
+		var str = prompt("Please enter a whole number:");
+		var arr = str.split("");
+		var start = 0;
+		var end = 0;
+		var count = 0;
+		var store = [];
+		var newstr = "";
+
+		for (var i = 0; i < str.length; i++) {
+
+			if (!((i + 1) === str.length)) {
+				if (str[i] % 2) {
+					if (str[i + 1] % 2) {
+						store.push(arr.slice(start, i + 1));
+						start = i + 1;
+						count++;
+					}
+				}
+			} else {
+				store.push(arr.slice(start,str.length));
+				count++;
+			}
+
+		}
+
+		for (var i = 0; i < store.length; i++) {
+			store[i] = store[i].join("");
+		}
+
+		newstr = store.join("-");
+
+		console.log(newstr);
+
+	</script>
+
+
+</body>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+
+	<script>
+
+		start:
+
+		while (true) {
+
+			var num = parseFloat(prompt("Enter a number between 1 and 100:"));
+			var guess = 50;
+			var clue = "";
+			var u = 101;
+			var l = 0;
+
+			while (true) {
+
+				clue = prompt("Is your number " + guess + "?\nPlease enter Y or H (too high) or L (too low).");
+
+				if (clue === "Y") {
+					continue start;
+				} else if (clue === "H") {
+					u = guess;
+				} else if (clue === "L") {
+					l = guess;
+				}
+
+				guess = Math.floor(l + ((u - l) / 2));
+
+			}
+		}
+
+	</script>
+
+</body>
+</html>

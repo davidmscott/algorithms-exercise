@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+
+	<script>
+
+		var room = "start";
+		var win = false;
+		var shield = false;
+		var direction = "";
+
+		while (win === false) {
+
+			if (room === "start") {
+				direction = prompt("You are in a room. There is an exit to the north and to the west.");
+				if (direction === "go west") {
+					room = "west";
+				} else if (direction === "go north") {
+					room = "north";
+				} else {
+					prompt("You can't go that way. Press enter to continue.");
+				}
+			}
+
+			if (room === "west") {
+				if (shield) {
+					direction = prompt("You are in a room. There is an exit to the east.");
+					if (direction === "go east") {
+						room = "start";
+					} else {
+						prompt("You can't go that way. Press enter to continue.");
+					}
+				}
+				if (!shield) {
+					direction = prompt("You are in a room with a shield. There is an exit to the east.");
+					if (direction === "get shield") {
+						shield = true;
+					} else if (direction === "go east") {
+						room = "start";
+					} else {
+						prompt("You can't go that way. Press enter to continue.");
+					}
+				}
+			}
+
+			if (room === "north") {
+				direction = prompt("You are in a room with a dragon! The dragon is guarding an exit to the north. There is a clear exit to the south.");
+				if (direction === "go north") {
+					if (shield) {
+						prompt("You defended yourself with the shield and made your way to safety! Breathe a sigh of relief and press enter.");
+						win = true;
+					} else {
+						prompt("The dragon breathes fire in your direction and you retreat back to the middle of the room! Press enter to continue.");
+					}
+				} else if (direction === "go south") {
+					room = "start";
+				} else {
+					prompt("You can't go that way. Press enter to continue.");
+				}
+			}
+
+		}
+
+	</script>
+
+</body>
+</html>
